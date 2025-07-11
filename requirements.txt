@@ -1,44 +1,68 @@
-torch-ema
-ninja
-trimesh
-opencv-python
-tensorboardX
-numpy 
+# Core ML/DL
+# torch # Implicitly installed by transformers, diffusers, faster-whisper. Specify if a particular version is needed.
+# torchvision # Often needed with torch
+# torchaudio # Often needed with torch
+numpy
 pandas
 tqdm
-matplotlib
-PyMCubes
-rich
-dearpygui
-packaging
 scipy
 scikit-learn
 
-face_alignment
-python_speech_features
-numba
-resampy
-#pyaudio
-soundfile==0.12.1
-einops
-configargparse
-
-lpips==0.1.3
-imageio-ffmpeg
-
+# MuseTalk & Diffusers based Avatar dependencies
 transformers
-edge_tts
-flask
-flask_sockets
-opencv-python-headless
-aiortc
-aiohttp_cors
-
-ffmpeg-python
-omegaconf
 diffusers
 accelerate
+torch-ema # From original
+einops # From original
+omegaconf # From original
+# Pillow (usually a sub-dependency)
 
-librosa
-openai
-websockets==12.0
+# ASR
+faster-whisper
+
+# LLM
+ollama
+
+# Audio Processing
+soundfile==0.12.1 # Keep existing version unless conflict
+librosa # From original, useful for audio analysis/processing
+python_speech_features # From original
+resampy # From original
+# pyaudio # Often problematic, used for direct audio I/O, not essential for core logic
+
+# Web Framework & WebRTC
+aiohttp
+aiohttp_cors
+aiortc
+# flask # Kept for now, original app.py had it, ensure it's needed or remove
+# flask_sockets # Kept for now
+
+# TTS
+edge-tts # For EdgeTTS, if used by TTSEngine
+
+# Image/Video Processing
+opencv-python # or opencv-python-headless
+imageio-ffmpeg # From original, for video operations
+# moviepy # Add if MuseTalk or other video processing explicitly requires it
+
+# Utilities & Others from original requirements
+ninja
+trimesh
+tensorboardX
+matplotlib
+PyMCubes
+rich
+dearpygui # GUI library, likely for local tools, not server core
+packaging
+face_alignment # Likely for avatar preprocessing or other models
+numba # For performance
+configargparse # For argument parsing
+lpips==0.1.3 # For image quality assessment, likely for model training/evaluation
+ffmpeg-python # Python bindings for ffmpeg
+openai # If direct OpenAI API access is also planned
+websockets==12.0 # Kept for now, review if necessary
+
+# Ensure this list is reviewed for actual project needs to avoid unnecessary packages.
+# Comment out or remove lines that are definitely not used.
+# Consider using a virtual environment and `pip freeze > requirements.txt`
+# after installing only the necessary packages for a cleaner list.
